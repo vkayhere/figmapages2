@@ -1,0 +1,22 @@
+{
+  "name": "figma-pages",
+  "version": "1.0.0",
+  "description": "A website displaying Figma designs as cards with copy-to-clipboard functionality",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-copy-to-clipboard": "^5.1.0",
+    "react-feather": "^2.0.10",
+    "styled-components": "^6.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.0",
+    "vite": "^5.0.0"
+  }
+} 
