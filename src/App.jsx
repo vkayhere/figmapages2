@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Header from './components/Header';
 import DesignCard from './components/DesignCard';
+import DesignModal from './components/DesignModal';
 import { designsData } from './data/designs';
 import searchIcon from './assets/icons/search-icon.svg';
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTag, setActiveTag] = useState('Web');
+  const [selectedDesign, setSelectedDesign] = useState(null);
+  const [isCopied, setIsCopied] = useState(false);
   
   const filteredDesigns = designsData.filter(design => {
     const matchesSearch = design.name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -19,6 +22,19 @@ const App = () => {
     setSearchQuery(e.target.value);
   };
 
+  const handleCardClick = (design) => {
+    setSelectedDesign(design);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedDesign(null);
+  };
+
+  const handleCopy = () => {
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
+
   return (
     <AppContainer>
       <Header />
@@ -28,23 +44,37 @@ const App = () => {
           <HeroSection>
             <HeroRectangle>
               <HeroText>
-                Top quality Figma designs. Free. No Auto Layouts. Just raw designs for you to play with. Hire me for work
+                Free top quality Figma designs. No Auto Layouts. Just raw designs for you to play with. Hire me for work
               </HeroText>
             </HeroRectangle>
           </HeroSection>
           
           <SearchSection>
-            <SearchBox>
-              <SearchInput 
-                type="text" 
-                placeholder="Search"
-                value={searchQuery}
-                onChange={handleSearch}
-              />
-              <SearchIcon>
-                <img src={searchIcon} alt="Search" width="18" height="18" />
-              </SearchIcon>
-            </SearchBox>
+            <LeftGroup>
+              <SearchBox>
+                <SearchInput 
+                  type="text" 
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={handleSearch}
+                />
+                <SearchIcon>
+                  <img src={searchIcon} alt="Search" width="18" height="18" />
+                </SearchIcon>
+              </SearchBox>
+              
+              <FilterTags>
+                {['Web', 'Mobile', 'AI', 'Saas', 'Landing Page', 'Free', 'Pro'].map(tag => (
+                  <TagButton 
+                    key={tag}
+                    active={activeTag === tag}
+                    onClick={() => setActiveTag(tag)}
+                  >
+                    {tag}
+                  </TagButton>
+                ))}
+              </FilterTags>
+            </LeftGroup>
             
             <StatCounter>
               <span>500 Components. Last Updated on 11 Mar, 2025</span>
@@ -52,28 +82,25 @@ const App = () => {
             </StatCounter>
           </SearchSection>
           
-          <FilterTags>
-            {['Web', 'Mobile', 'AI', 'Saas', 'Landing Page', 'Free', 'Pro'].map(tag => (
-              <TagButton 
-                key={tag}
-                active={activeTag === tag}
-                onClick={() => setActiveTag(tag)}
-              >
-                {tag}
-              </TagButton>
-            ))}
-          </FilterTags>
-          
           <CardsGrid>
             {filteredDesigns.map(design => (
               <DesignCard 
                 key={design.id} 
-                design={design} 
+                design={design}
+                onCardClick={handleCardClick}
               />
             ))}
           </CardsGrid>
         </div>
       </MainContent>
+
+      {selectedDesign && (
+        <DesignModal 
+          design={selectedDesign}
+          onClose={handleCloseModal}
+          onCopy={handleCopy}
+        />
+      )}
     </AppContainer>
   );
 };
@@ -111,7 +138,7 @@ const HeroText = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   
-  @media (max-width: 768px) {
+  @media (max-width: 100%) {
     white-space: normal;
     max-width: 600px;
   }
@@ -130,11 +157,23 @@ const SearchSection = styled.div`
   }
 `;
 
+const LeftGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  
+  @media (max-width: 100%) {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+`;
+
 const SearchBox = styled.div`
   position: relative;
   width: 300px;
   
-  @media (max-width: 768px) {
+  @media (max-width: 100%) {
     width: 100%;
   }
 `;
@@ -186,8 +225,16 @@ const GreenDot = styled.div`
 const FilterTags = styled.div`
   display: flex;
   gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 30px;
+  white-space: nowrap;
+  overflow-x: auto;
+  padding-bottom: 5px;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 `;
 
 const TagButton = styled.button`
