@@ -9,7 +9,6 @@ const DesignModal = ({ design, onClose, onCopy }) => {
     <ModalOverlay>
       <ModalBackground onClick={onClose} />
       <ModalContent>
-        <Rectangle22 />
         <ModalCard>
           <DesignHeader>
             <DesignTitle>{design.name}</DesignTitle>
@@ -23,6 +22,10 @@ const DesignModal = ({ design, onClose, onCopy }) => {
               </TagButton>
             ))}
           </TagsContainer>
+          
+          <DesignPreview>
+            <div dangerouslySetInnerHTML={{ __html: design.svg }} />
+          </DesignPreview>
           
           <CopyToClipboard text={design.svg} onCopy={onCopy}>
             <CopyButton>
@@ -65,18 +68,11 @@ const ModalBackground = styled.div`
 
 const ModalContent = styled.div`
   position: relative;
-  width: 550px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
   z-index: 1001;
-`;
-
-const Rectangle22 = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 150px;
-  background-color: #D9D9D9;
-  border-radius: 4px;
+  overflow: auto;
 `;
 
 const ModalCard = styled.div`
@@ -99,7 +95,7 @@ const DesignHeader = styled.div`
 const DesignTitle = styled.h2`
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 20px;
   margin: 0;
   color: #000000;
 `;
@@ -131,6 +127,21 @@ const TagButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const DesignPreview = styled.div`
+  width: 100%;
+  padding: 20px;
+  background-color: #FAFAFA;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
 `;
 
 const CopyButton = styled.button`

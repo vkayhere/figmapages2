@@ -1,0 +1,15 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" rx="10" fill="#F5F5F5"/>
+  <rect x="40" y="40" width="120" height="30" rx="5" fill="white" stroke="#E0E0E0"/>
+  <text x="55" y="60" font-family="Arial" font-size="12" fill="#999">Full Name</text>
+  <rect x="40" y="75" width="120" height="30" rx="5" fill="white" stroke="#E0E0E0"/>
+  <text x="55" y="95" font-family="Arial" font-size="12" fill="#999">Email</text>
+  <rect x="40" y="110" width="120" height="30" rx="5" fill="white" stroke="#E0E0E0"/>
+  <text x="55" y="130" font-family="Arial" font-size="12" fill="#999">Password</text>
+  <rect x="40" y="145" width="120" height="30" rx="5" fill="white" stroke="#E0E0E0"/>
+  <text x="55" y="165" font-family="Arial" font-size="12" fill="#999">Confirm Password</text>
+  <rect x="40" y="185" width="120" height="35" rx="5" fill="#22C55E" stroke="none"/>
+  <text x="82" y="207" font-family="Arial" font-weight="bold" font-size="14" fill="white">Sign Up</text>
+  <circle cx="100" cy="20" r="10" fill="#22C55E"/>
+  <path d="M95 20 L105 20 M100 15 L100 25" stroke="white" stroke-width="2"/>
+</svg> 

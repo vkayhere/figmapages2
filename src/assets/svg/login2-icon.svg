@@ -1,0 +1,16 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" rx="10" fill="#F5F5F5"/>
+  <rect x="40" y="60" width="120" height="40" rx="5" fill="white" stroke="#E0E0E0"/>
+  <text x="55" y="85" font-family="Arial" font-size="14" fill="#999">Email or Phone</text>
+  <rect x="40" y="110" width="120" height="40" rx="5" fill="white" stroke="#E0E0E0"/>
+  <text x="55" y="135" font-family="Arial" font-size="14" fill="#999">Password</text>
+  <rect x="40" y="160" width="120" height="40" rx="5" fill="#0EA5E9" stroke="none"/>
+  <text x="85" y="185" font-family="Arial" font-weight="bold" font-size="14" fill="white">Login</text>
+  <text x="70" y="25" font-family="Arial" font-weight="bold" font-size="16" fill="#0EA5E9">Login 2.0</text>
+  <rect x="58" y="210" width="26" height="26" rx="13" fill="#4267B2"/>
+  <text x="66" y="227" font-family="Arial" font-weight="bold" font-size="14" fill="white">f</text>
+  <rect x="94" y="210" width="26" height="26" rx="13" fill="#1DA1F2"/>
+  <text x="101" y="227" font-family="Arial" font-weight="bold" font-size="14" fill="white">t</text>
+  <rect x="130" y="210" width="26" height="26" rx="13" fill="#DB4437"/>
+  <text x="137" y="227" font-family="Arial" font-weight="bold" font-size="14" fill="white">g</text>
+</svg> 
