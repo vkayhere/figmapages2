@@ -111,11 +111,13 @@ const AppContainer = styled.div`
 `;
 
 const MainContent = styled.main`
-  padding: 0px 0;
+  padding: 0;
+  width: 100%;
 `;
 
 const HeroSection = styled.section`
   margin-bottom: 40px;
+  width: 100%;
 `;
 
 const HeroRectangle = styled.div`
@@ -125,6 +127,7 @@ const HeroRectangle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 `;
 
 const HeroText = styled.p`
